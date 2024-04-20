@@ -1,0 +1,35 @@
+About Question :
+We do entire this question on console(Know the difference between console and terminal) then give ssh permission and move to terminal.
+because first we need to configure servera ip on which we are suppose to do remaining work. 
+
+ANS:
+
+step1:
+nmcli connection (Display all network connections)
+Wired connection 1 ..........(with green highlight means it is up )
+
+step2:
+nmcli connection modify "Wired  connection 1" connection.autoconnect yes ipv4.addressess 172.250.25.10/24 ipv4.gateway 172.250.25.254 ipv4.dns 172.250.25.254 ipv4.method manual ipv4.dns-search lab.example.com
+    
+
+step:3
+hostnamectl set-hostname servera.lab.example.com
+
+step4:
+nmcli connection up "Wired connection 1"
+
+
+tip : after above stuff done on node 1 we need to configure ssh as ,
+        PermitRootLogin yes   (Enable permission to login uncomment it by removing '#' )
+      in order to ssh login into servera via terminal for efficiency
+
+       [root@oworkstation ~]# systemctl restart sshd
+        The next we can able to access it on terminal by 
+
+       [root@workstation ~]# ssh root@our_set_ip
+       [root@our_set_hostname ~]# (Solve next questions onwards...)  
+
+
+
+
+ 
