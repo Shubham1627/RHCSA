@@ -1,0 +1,38 @@
+About Question:
+
+- A web server running on non standard port 82 is having issues serving
+content,Debug and fix the issues.
+- The web server on your system can server all the existing HTML files from
+/var/www/html
+- Web service should automatically start at boot time.
+NOTE: Do not make any changes to these files
+  
+    These are two important command-tools required to manage "semanage port" , "firewall-cmd"
+Notep: we require httpd package we install before..to use the abilities 
+    of package we need to do....
+
+step1:
+    systemctl status httpd.service (Check status if not present , install if not by 'yum install httpd')
+    systemctl enable --now httpd.service
+    systemctl status httpd.service
+
+step2:
+ vim /etc/httpd/httpd.conf 
+        little change in configuration after scroll down into above file
+          Listen 82
+      systemctl restart httpd.service
+
+step3:
+    Adding the given port permanently
+     firewall-cmd --add-port=82/tcp --permenent
+     firewall-cmd --reload
+     firewall-cmd --list-all   (verify)
+
+step4:   
+    semanage port -l | grep http
+    semanage port -a -t httpd_port_t -p tcp 82
+    semanage port -l | grep http    
+
+step5:
+
+  curl localhost:82   (verify at give url instead localhost)   

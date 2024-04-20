@@ -1,3 +1,7 @@
+About Question:
+For installation of any package, configuration of yum repositories is very important, In question we get two urls 
+to configure BaseOS and AppStream with following syntax and flags.
+
 [root@servera~]# vim /etc/yum.repos.d/rhel.repos (create repo file with name 'rhel.repo' at that location)
 
           [BaseOS]
