@@ -19,7 +19,7 @@ step4:
 nmcli connection up "Wired connection 1"
 
 
-tip : after above stuff done on node 1 we need to configure ssh as ,
+Note : after above stuff done on node 1 we need to configure ssh as ,
         PermitRootLogin yes   (Enable permission to login uncomment it by removing '#' )
       in order to ssh login into servera via terminal for efficiency
 
