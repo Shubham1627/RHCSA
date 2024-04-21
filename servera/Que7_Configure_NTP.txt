@@ -1,0 +1,18 @@
+
+About Question:
+
+Synchronize time of your system with the server 'classroom.example.com'
+
+
+
+[root@servera~]systemctl status chronyd.service
+[root@servera~]systemctl enable --now chronyd.service
+[root@servera~]timedatectl
+[root@servera~]timedatectl set-ntp true
+[root@servera~]vim /etc/chrony.service -- verify the actual file
+    server classroom.example.com iburst     ...( Add these line )
+    :wq!
+
+[root@servera~]systemctl restart chronyd.service   -- it is very important
+
+[root@servera~]chronyc sources -v      ...( To verify)

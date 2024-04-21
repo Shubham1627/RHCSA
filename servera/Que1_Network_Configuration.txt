@@ -5,18 +5,18 @@ because first we need to configure servera ip on which we are suppose to do rema
 ANS:
 
 step1:
-nmcli connection (Display all network connections)
+[root@node1~] nmcli connection (Display all network connections)
 Wired connection 1 ..........(with green highlight means it is up )
 
 step2:
-nmcli connection modify "Wired  connection 1" connection.autoconnect yes ipv4.addressess 172.250.25.10/24 ipv4.gateway 172.250.25.254 ipv4.dns 172.250.25.254 ipv4.method manual ipv4.dns-search lab.example.com
+[root@node1~] nmcli connection modify "Wired  connection 1" connection.autoconnect yes ipv4.addressess 172.250.25.10/24 ipv4.gateway 172.250.25.254 ipv4.dns 172.250.25.254 ipv4.method manual ipv4.dns-search lab.example.com
     
 
 step:3
-hostnamectl set-hostname servera.lab.example.com
+[root@node1~] hostnamectl set-hostname servera.lab.example.com
 
 step4:
-nmcli connection up "Wired connection 1"
+[root@node1~] nmcli connection up "Wired connection 1"
 
 
 Note : after above stuff done on node 1 we need to configure ssh as ,

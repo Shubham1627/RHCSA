@@ -1,0 +1,35 @@
+About Question: 
+    Configure AutoFS
+    - All ldapuserX home directory is exported via NFS, which is available on
+    classroom.example.com(172.25.250.254) and your NFS-exports
+    directory is /home/guests for ldaouserX.
+    - ldapuserX's home directory is 
+    classroom.example.com:/home/guests/ldapuserX,
+    Where 'X' is the station number.
+    - ldapuserX's home directory should be automount autofs service.
+    - home directories must be writtable by their users.
+    NOTE: While you are able to loginas any of user ldapuser1 to ldapuser20 the only home
+    directory that is accessible from your system.
+
+
+
+1)  systemctl status autofs.service
+    systemctl enable --now autofs
+        check status again
+
+2) vim /etc/auto.master
+   /home/guests  /etc/auto.misc
+   :wq!
+
+3) vim /etc/auto.misc
+
+    username    -fstype=nfs,rw,sync:classroom.example.com/home/guests/&
+
+4) systemctl restart autofs 
+
+5) How to verify 
+    ls -ld /home/guests
+
+
+
+        

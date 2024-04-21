@@ -1,0 +1,21 @@
+About Question:
+
+Configure a cron job that runs every 1 minutes and executes logger "EX200 in
+progress" as the user natasha.
+
+"crond.service" , "crontab" these two important service and command are used.
+
+
+ [root@servera~]# systemctl status crond.service
+        if package is absent:
+       [root@servera~]# yum install crond.service
+        else:
+        [root@servera~]# systemctl restart crond.service
+        [root@servera~]# systemctl enable --now crond.service
+
+
+        [root@servera~]# crontab -eu natasha            ...( Creare cronjob with given specified user)
+        */1   *   *   *   *   logger "EX200 progress"
+
+        :wq!
+        [root@servera~]# tail -f /var/log/messages  | grep "EX200"        

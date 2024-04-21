@@ -1,0 +1,24 @@
+About Question
+ Create User accounts with supplementry group.
+   - create the group a named "sysadms"
+   - create users as named "natasha" and "harry", will be the supplementry group
+      "sysadms".
+   - create a user as named "sarah", should have non-interactive shell and it should be not
+      the member of "sysadms"
+   - password for all users should be "trootent"
+
+
+[root@servera~]# groupadd sysadms              ...( To add a group)
+[root@servera~]# tail /etc/group               ...( To verify the group)  
+[root@servera~]# useradd -G sysadms natasha    ...( Add user into 'sysadms' groups)   
+[root@servera~]# id natasha                    ...( Verify the user)   
+[root@servera~]# useradd -[root@servera~]G sysadms harry
+[root@servera~]# id harry
+[root@servera~]# useradd -s /sbin/nologin sarah ..( create a group with non-interactive shell )
+[root@servera~]# tail /etc/passwd               ..( check the user list with described info) 
+[root@servera~]# passwd --stdin natasha         ..( assign password ['--stdin' to see the password]) 
+trootent
+[root@servera~]# passwd --stdin harry
+trootent
+[root@servera~]# passwd --stdin sarah
+trootent

@@ -1,0 +1,17 @@
+About Question:
+
+ Create a collaborative Directory.
+- Create the Directory "/home/manager" with the following characteristics.
+- Group ownership of "/home/manager" should go to "sysadms" group.
+- The directory should have full permission for all members of 
+  "sysadms" group but not to the other users except "root".
+- Files created in future under "/home/manager" should get the 
+  same group ownership
+
+  [root@servera~]# mkdir /home/manager
+  chgrp sysadms /home/manager
+  [root@servera~]# ll -ld /home/manager
+
+  [root@servera~]#chmod u+rwx,g+rwx,o-rwx /home/manager 
+  [root@servera~]#chmod g+s /home/manager
+   
