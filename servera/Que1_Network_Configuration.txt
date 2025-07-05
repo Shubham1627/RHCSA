@@ -1,4 +1,5 @@
 About Question :
+
 We do entire this question on console(Know the difference between console and terminal) then give ssh permission and move to terminal.
 because first we need to configure servera ip on which we are suppose to do remaining work. 
 
@@ -6,27 +7,29 @@ ANS:
 
 step1:
 [root@node1~] nmcli connection (Display all network connections)
-Wired connection 1 ..........(with green highlight means it is up )
+Wired connection 1 ..........( the green highlighted is active connection, we need to modify that active connection only)
 
 step2:
 [root@node1~] nmcli connection modify "Wired  connection 1" connection.autoconnect yes ipv4.addressess 172.250.25.10/24 ipv4.gateway 172.250.25.254 ipv4.dns 172.250.25.254 ipv4.method manual ipv4.dns-search lab.example.com
-    
+
+We also do this question by using "nmtui", a graphical way for network configuration.    
 
 step:3
-[root@node1~] hostnamectl set-hostname servera.lab.example.com
+[root@node1~] hostnamectl set-hostname <--given-host-name-->
 
 step4:
 [root@node1~] nmcli connection up "Wired connection 1"
 
 
-Note : after above stuff done on node 1 we need to configure ssh as ,
-        PermitRootLogin yes   (Enable permission to login uncomment it by removing '#' )
-      in order to ssh login into servera via terminal for efficiency
+Note : - After above stuff done on servera/node1 console.  we need to configure ssh open /etc/ssh/sshd_config and uncomment below line
+           PermitRootLogin yes
+       - This step enable secure connection to servera/node1 through our local terminal workstation server.
+       - Although it is not part of RHCSA examination, but it is feasible if we use terminal to solve further questions, You can also proceed with next question directly on console. 
 
        [root@oworkstation ~]# systemctl restart sshd
         The next we can able to access it on terminal by 
 
-       [root@workstation ~]# ssh root@our_set_ip
+       [root@workstation ~]# ssh root@our_set_ip  -- (This step verifies that our set IP is correct or not.)
        [root@our_set_hostname ~]# (Solve next questions onwards...)  
 
 
